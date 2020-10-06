@@ -13,7 +13,7 @@ import java.util.*;
 @ToString(exclude = {"attributes"})
 public class ShapeCategory {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -75,5 +75,14 @@ public class ShapeCategory {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public ShapeCategory(Long id, @NotNull @Size(min = 1, max = 50) String name,
+                         @NotNull @Size(min = 1, max = 255) String areaFormula,
+                         Set<ShapeAttribute> attributes) {
+        this.id = id;
+        this.name = name;
+        this.areaFormula = areaFormula;
+        this.attributes = attributes;
     }
 }

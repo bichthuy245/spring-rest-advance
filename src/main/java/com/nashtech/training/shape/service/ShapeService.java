@@ -4,9 +4,7 @@ package com.nashtech.training.shape.service;
 import com.nashtech.training.shape.model.Shape;
 import com.nashtech.training.shape.model.ShapeCategory;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public interface ShapeService {

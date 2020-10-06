@@ -1,11 +1,11 @@
 package com.nashtech.training.shape.service.impl;
 
-import com.nashtech.training.shape.model.Shape;
-import com.nashtech.training.shape.model.ShapeCategory;
-import com.nashtech.training.shape.repository.ShapeCategoryRepository;
 import com.nashtech.training.shape.repository.ShapeRepository;
 import com.nashtech.training.shape.service.ShapeService;
 import com.nashtech.training.shape.utils.LongRunning;
+import com.nashtech.training.shape.model.Shape;
+import com.nashtech.training.shape.model.ShapeCategory;
+import com.nashtech.training.shape.repository.ShapeCategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
