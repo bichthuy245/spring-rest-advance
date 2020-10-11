@@ -12,6 +12,7 @@ import java.util.*;
 @Data
 @ToString(exclude = {"attributes"})
 public class ShapeCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,36 +26,7 @@ public class ShapeCategory {
     @Size(min = 1, max = 255)
     private String areaFormula;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAreaFormula() {
-        return areaFormula;
-    }
-
-    public void setAreaFormula(String areaFormula) {
-        this.areaFormula = areaFormula;
-    }
-
-    public Set<ShapeAttribute> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Set<ShapeAttribute> attributes) {
-        this.attributes = attributes;
+    public ShapeCategory() {
     }
 
     @OneToMany(
@@ -75,14 +47,5 @@ public class ShapeCategory {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    public ShapeCategory(Long id, @NotNull @Size(min = 1, max = 50) String name,
-                         @NotNull @Size(min = 1, max = 255) String areaFormula,
-                         Set<ShapeAttribute> attributes) {
-        this.id = id;
-        this.name = name;
-        this.areaFormula = areaFormula;
-        this.attributes = attributes;
     }
 }

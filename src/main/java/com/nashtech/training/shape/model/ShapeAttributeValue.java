@@ -15,34 +15,11 @@ public class ShapeAttributeValue {
 
     private Double value;
 
-    public String getAttributeName() {
-        return attributeName;
-    }
-
-    public Double getValue() {
-        return value;
-    }
-
-    public Shape getShape() {
-        return shape;
-    }
-
-    public void setAttributeName(String attributeName) {
-        this.attributeName = attributeName;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
-    }
-
-    public void setShape(Shape shape) {
-        this.shape = shape;
-    }
-
     @Id
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(insertable = false, updatable = false)
     private Shape shape;
+
 
     @Override
     public boolean equals(Object o) {

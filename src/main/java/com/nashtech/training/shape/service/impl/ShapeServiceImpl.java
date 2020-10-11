@@ -76,11 +76,20 @@ public class ShapeServiceImpl implements ShapeService {
 
     @Override
     public boolean deleteShape(long id) {
-       throw new NotImplementedException();
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean deleteCategory(long id) {
-        throw new NotImplementedException();
+        boolean isDelete = false;
+        Optional<ShapeCategory> shapeCategory = shapeCategoryRepository.findById(id);
+        if (shapeCategory.isPresent()) {
+            shapeCategoryRepository.deleteById(id);
+            isDelete = true;
+        } else {
+            throw new NotImplementedException();
+        }
+        return isDelete;
     }
+
 }

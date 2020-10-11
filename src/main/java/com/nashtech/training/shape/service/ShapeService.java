@@ -28,4 +28,5 @@ public interface ShapeService {
     boolean deleteShape(long id);
 
     boolean deleteCategory(long id);
+
 }

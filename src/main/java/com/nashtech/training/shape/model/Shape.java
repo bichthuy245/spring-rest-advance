@@ -1,62 +1,34 @@
 package com.nashtech.training.shape.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Entity(name = "SHAPE")
+@Setter
+@Getter
 public class Shape {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "CAT_ID", referencedColumnName = "ID")
+    @JoinColumn( name="CAT_ID", referencedColumnName = "ID")
     private ShapeCategory category;
 
     @Column(name = "OWNER")
     private String user;
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public ShapeCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(ShapeCategory category) {
-        this.category = category;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public Set<ShapeAttributeValue> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Set<ShapeAttributeValue> attributes) {
-        this.attributes = attributes;
-    }
-
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+
     @JoinColumn(name = "shape_id")
     private Set<ShapeAttributeValue> attributes = new HashSet<>();
 

@@ -1,13 +1,19 @@
 package com.nashtech.training.shape.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Data
+@Getter
+@Setter
 public class ShapeCategoryDto {
+
 
     private Long id;
 
@@ -22,35 +28,11 @@ public class ShapeCategoryDto {
     @NotNull
     private Set<String> attributes;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
+    public ShapeCategoryDto(Long id, String name, String areaFormula, Set<String> attributes) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAreaFormula() {
-        return areaFormula;
-    }
-
-    public void setAreaFormula(String areaFormula) {
         this.areaFormula = areaFormula;
-    }
-
-    public Set<String> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Set<String> attributes) {
         this.attributes = attributes;
     }
+
 }

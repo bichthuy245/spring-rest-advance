@@ -26,22 +26,6 @@ public class ShapeAttribute {
     public ShapeAttribute() {
     }
 
-    public String getAttributeName() {
-        return attributeName;
-    }
-
-    public void setAttributeName(String attributeName) {
-        this.attributeName = attributeName;
-    }
-
-    public ShapeCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(ShapeCategory category) {
-        this.category = category;
-    }
-
     public ShapeAttribute(@NotNull @Size(min = 1, max = 5) String attributeName, ShapeCategory category) {
         this.attributeName = attributeName;
         this.category = category;
