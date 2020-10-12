@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -26,6 +27,9 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
@@ -34,12 +38,12 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("fooClientId").secret("secret")
+                .withClient("fooClientId").secret(passwordEncoder.encode("secret"))
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token").scopes("read","write")
                 .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "USER","ADMIN")
                 .autoApprove(true)
-                .accessTokenValiditySeconds(180)//Access token is only valid for 3 minutes.
-                .refreshTokenValiditySeconds(600);//Refresh token is only valid for 10 minutes.;
+                .accessTokenValiditySeconds(86400)
+                .refreshTokenValiditySeconds(172800);
     }
 
     @Override

@@ -11,11 +11,9 @@ import java.util.List;
 @Transactional
 public interface UserDetailsRepository extends JpaRepository <UserInfo,Long> {
 
-    public UserInfo findByUserNameAndEnabled(String userName, short enabled);
+    UserInfo findByUserName(String userName);
 
-    public List<UserInfo> findAllByEnabled(short enabled);
+    UserInfo findById(Integer id);
 
-    public UserInfo findById(Integer id);
-
-    public void deleteById(Integer id);
+    void deleteById(Integer id);
 }
